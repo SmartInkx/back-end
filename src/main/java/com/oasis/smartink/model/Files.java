@@ -1,11 +1,6 @@
 package com.oasis.smartink.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,11 +19,6 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 @Table(name = "files")
 public class Files {
 
@@ -51,9 +41,33 @@ public class Files {
     private String type;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "incidents_uuid", referencedColumnName = "id",
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id",
                 foreignKey = @ForeignKey(name = "id"))
     private Usuario usuario;
+
+
+    public Files(UUID uuid, LocalDateTime createdAt, LocalDateTime updatedAt, String filename, byte[] data, String type, Usuario usuario) {
+        this.uuid = uuid;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.filename = filename;
+        this.data = data;
+        this.type = type;
+        this.usuario = usuario;
+    }
+
+    public Files(String filename, byte[] data, String type, Usuario usuario) {
+        this.uuid = uuid;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.filename = filename;
+        this.data = data;
+        this.type = type;
+        this.usuario = usuario;
+    }
+
+    public Files() {
+    }
 
     @PrePersist
     protected void onCreate(){
@@ -65,4 +79,60 @@ public class Files {
         this.updatedAt = LocalDateTime.now();
     }
 
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

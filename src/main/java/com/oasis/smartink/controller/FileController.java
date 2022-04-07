@@ -2,7 +2,6 @@ package com.oasis.smartink.controller;
 
 import com.oasis.smartink.model.Files;
 import com.oasis.smartink.service.FilesService;
-import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,11 +15,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @CrossOrigin(origins = "*")
 @RequestMapping("/api")
-@AllArgsConstructor
 @RestController
 public class FileController {
 
     FilesService filesService;
+
+    public FileController(FilesService filesService) {
+        this.filesService = filesService;
+    }
 
     @PostMapping("uploadFile/{idUser}")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file,
