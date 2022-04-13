@@ -15,35 +15,35 @@ public class FilesServiceImpl implements FilesService {
     FilesRepository filesRepository;
     UsuarioRepository usuarioRepository;
 
-    public FilesServiceImpl(FilesRepository filesRepository, UsuarioRepository usuarioRepository) {
+    public FilesServiceImpl(FilesRepository filesRepository/*, UsuarioRepository usuarioRepository*/) {
         this.filesRepository = filesRepository;
         this.usuarioRepository = usuarioRepository;
     }
 
     @Override
-    public Files save(MultipartFile files, String idUser){
+    public Files save(MultipartFile files/*, String idUser*/){
         try {
-            return uploadFile(files, idUser);
+            return uploadFile(files/*, idUser*/);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    private Files uploadFile(MultipartFile files, String idUser) throws IOException {
+    private Files uploadFile(MultipartFile files/*, String idUser*/) throws IOException {
         byte[] data = files.getBytes();
         String type = files.getContentType();
         String filename = files.getOriginalFilename();
         validacaoFileName(filename);
 
-        Usuario usuario = usuarioRepository.findById(Long.parseLong(idUser))
-                                           .orElseThrow(() -> new RuntimeException("Usuario não encontrado pelo id informado [" + idUser + "]"));
+//        Usuario usuario = usuarioRepository.findById(Long.parseLong(idUser))
+//                                           .orElseThrow(() -> new RuntimeException("Usuario não encontrado pelo id informado [" + idUser + "]"));
 
-        Files buildFiles = filesRepository.saveAndFlush(new Files(filename, data, type, usuario));
+        Files buildFiles = filesRepository.saveAndFlush(new Files(filename, data, type/*, usuario*/));
 
-        usuario.setFiles(buildFiles);
-
-        usuarioRepository.save(usuario);
+//        usuario.setFiles(buildFiles);
+//
+//        usuarioRepository.save(usuario);
 
         return buildFiles;
     }

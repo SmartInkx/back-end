@@ -42,30 +42,30 @@ public class Files {
 
     private String type;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id",
-                foreignKey = @ForeignKey(name = "id"))
-    private Usuario usuario;
+//    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+//    @JoinColumn(name = "usuario_id", referencedColumnName = "id",
+//                foreignKey = @ForeignKey(name = "id"))
+//    //private Usuario usuario;
 
 
-    public Files(UUID uuid, LocalDateTime createdAt, LocalDateTime updatedAt, String filename, byte[] data, String type, Usuario usuario) {
+    public Files(UUID uuid, LocalDateTime createdAt, LocalDateTime updatedAt, String filename, byte[] data, String type/*, Usuario usuario*/) {
         this.uuid = uuid;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.filename = filename;
         this.data = data;
         this.type = type;
-        this.usuario = usuario;
+        //this.usuario = usuario;
     }
 
-    public Files(String filename, byte[] data, String type, Usuario usuario) {
+    public Files(String filename, byte[] data, String type/*, Usuario usuario*/) {
         this.uuid = uuid;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.filename = filename;
         this.data = data;
         this.type = type;
-        this.usuario = usuario;
+        //this.usuario = usuario;
     }
 
     public Files() {
@@ -130,11 +130,11 @@ public class Files {
         this.type = type;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+//    public Usuario getUsuario() {
+//        return usuario;
+//    }
+//
+//    public void setUsuario(Usuario usuario) {
+//        this.usuario = usuario;
+//    }
 }

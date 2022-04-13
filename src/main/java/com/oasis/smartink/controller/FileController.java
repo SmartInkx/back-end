@@ -24,11 +24,11 @@ public class FileController {
         this.filesService = filesService;
     }
 
-    @PostMapping("uploadFile/{idUser}")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file,
-                                             @PathVariable(name = "idUser", required = true) String idUser) {
+    @PostMapping("/uploadFile")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file/*,
+                                             @PathVariable(name = "idUser", required = true) String idUser*/) {
 
-        Files files = filesService.save(file, idUser);
+        Files files = filesService.save(file/*, idUser*/);
 
         return ResponseEntity.ok(ServletUriComponentsBuilder.fromCurrentContextPath()
                                                             .path("/downloadFile/")

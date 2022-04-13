@@ -7,5 +7,5 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public interface FilesService {
 
-    Files save(MultipartFile files, String idUser);
+    Files save(MultipartFile files/*, String idUser*/);
 }
