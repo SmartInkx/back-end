@@ -55,6 +55,8 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/usuarios/logar").permitAll()
 			.antMatchers("/usuarios/cadastrar").permitAll()
 			.antMatchers("/api/uploadFile").permitAll()
+			.antMatchers("/orcamento/enviarOrcamentoPiercing").permitAll()
+			.antMatchers("/orcamento/enviarOrcamentoTatuagem").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
 			.anyRequest().authenticated()
 			.and().httpBasic()

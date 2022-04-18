@@ -25,7 +25,7 @@ public class Files {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID uuid;
+    private Long id;
 
     @Column(name = "create_at")
     @JsonFormat(pattern = "dd=MM-yyyy HH:mm:ss")
@@ -42,14 +42,14 @@ public class Files {
 
     private String type;
 
-//    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-//    @JoinColumn(name = "usuario_id", referencedColumnName = "id",
-//                foreignKey = @ForeignKey(name = "id"))
-//    //private Usuario usuario;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "referencia_id", referencedColumnName = "uuid",
+                foreignKey = @ForeignKey(name = "uuidOrcamento"))
+    private OrcamentoTatuagem orcamentoTatuagem;
 
 
-    public Files(UUID uuid, LocalDateTime createdAt, LocalDateTime updatedAt, String filename, byte[] data, String type/*, Usuario usuario*/) {
-        this.uuid = uuid;
+    public Files(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, String filename, byte[] data, String type/*, Usuario usuario*/) {
+        this.id = id;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.filename = filename;
@@ -59,9 +59,6 @@ public class Files {
     }
 
     public Files(String filename, byte[] data, String type/*, Usuario usuario*/) {
-        this.uuid = uuid;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
         this.filename = filename;
         this.data = data;
         this.type = type;
@@ -81,13 +78,12 @@ public class Files {
         this.updatedAt = LocalDateTime.now();
     }
 
-
-    public UUID getUuid() {
-        return uuid;
+    public Long getId() {
+        return id;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public LocalDateTime getCreatedAt() {

@@ -1,14 +1,9 @@
 package com.oasis.smartink.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -37,13 +32,7 @@ public class Usuario {
 	@NotBlank(message = "O atributo Numero é Obrigatório!")
 	private String numero;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "files_uuid", referencedColumnName = "uuid",
-				foreignKey = @ForeignKey(name = "uuid"))
-	private Files files;
 
-
-	
 	public Usuario(Long id, String nome, String usuario, String senha, String numero) {
 		this.id = id;
 		this.nome = nome;
@@ -92,13 +81,5 @@ public class Usuario {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
-	}
-
-	public Files getFiles() {
-		return files;
-	}
-
-	public void setFiles(Files files) {
-		this.files = files;
 	}
 }

@@ -2,9 +2,9 @@ package com.oasis.smartink.controller;
 
 import com.oasis.smartink.model.Files;
 import com.oasis.smartink.service.FilesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,11 +18,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 public class FileController {
 
+    @Autowired
     FilesService filesService;
-
-    public FileController(FilesService filesService) {
-        this.filesService = filesService;
-    }
 
     @PostMapping("/uploadFile")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file/*,
@@ -32,7 +29,7 @@ public class FileController {
 
         return ResponseEntity.ok(ServletUriComponentsBuilder.fromCurrentContextPath()
                                                             .path("/downloadFile/")
-                                                            .path(files.getUuid()
+                                                            .path(files.getId()
                                                                        .toString())
                                                             .toString());
     }
