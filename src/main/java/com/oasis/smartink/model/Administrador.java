@@ -28,17 +28,12 @@ public class Administrador {
 	@NotBlank(message = "O atributo Senha é Obrigatório!")
 	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
 	private String senha;
-	
-	@NotBlank(message = "O atributo Numero é Obrigatório!")
-	private String numero;
 
-
-	public Administrador(Long id, String nome, String usuario, String senha, String numero) {
+	public Administrador(Long id, String nome, String usuario, String senha) {
 		this.id = id;
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
-		this.senha = numero;
 	}
 	
 	public Administrador() {}
@@ -73,13 +68,5 @@ public class Administrador {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
 	}
 }

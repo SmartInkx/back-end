@@ -14,10 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.Date;
 
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,19 +25,19 @@ import java.util.Date;
 public class AgendamentoPiercing {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Double valor;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "orcamento_piercing_id", referencedColumnName = "uuid",
-                foreignKey = @ForeignKey(name = "uuidOrcamento"))
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "orcamento_piercing_id", referencedColumnName = "id",
+                foreignKey = @ForeignKey(name = "id_orcamento_piercing"))
     private OrcamentoPiercing orcamentoPiercing;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "profissional_id", referencedColumnName = "id",
-                foreignKey = @ForeignKey(name = "idAdministrador"))
+                foreignKey = @ForeignKey(name = "id_administrador_piercing"))
     private Administrador administradorProfissional;
 
     public AgendamentoPiercing(Double valor, OrcamentoPiercing orcamentoPiercing, Administrador administradorProfissional) {

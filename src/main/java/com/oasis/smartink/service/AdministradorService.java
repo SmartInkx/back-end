@@ -78,7 +78,6 @@ public class AdministradorService {
 
                 usuarioLogin.get().setId(usuario.get().getId());
                 usuarioLogin.get().setNome(usuario.get().getNome());
-                usuarioLogin.get().setNumero(usuario.get().getNumero());
                 usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
                 usuarioLogin.get().setSenha(usuario.get().getSenha());
 

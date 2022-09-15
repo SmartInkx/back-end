@@ -15,10 +15,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,21 +27,21 @@ import java.util.Date;
 public class AgendamentoTatuagem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Double valor;
 
     private Date horario;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "orcamento_tatuagem_id", referencedColumnName = "uuid",
-                foreignKey = @ForeignKey(name = "uuidOrcamento"))
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "orcamento_tatuagem_id", referencedColumnName = "id",
+                foreignKey = @ForeignKey(name = "id_orcamento_tatuagem"))
     private OrcamentoTatuagem orcamentoTatuagem;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "profissional_id", referencedColumnName = "id",
-                foreignKey = @ForeignKey(name = "idAdministrador"))
+                foreignKey = @ForeignKey(name = "id_administrador_tatuagem"))
     private Administrador administradorProfissional;
 
     public AgendamentoTatuagem(Double valor, Date horario, OrcamentoTatuagem orcamentoTatuagem, Administrador administradorProfissional) {

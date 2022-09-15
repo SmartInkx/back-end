@@ -12,14 +12,11 @@ public class AdministradorLogin {
 
 	private String senha;
 
-	private String numero;
-
 	private String token;
 	
-	public AdministradorLogin(Long id, String nome, String numero, String usuario, String senha) {
+	public AdministradorLogin(Long id, String nome, String usuario, String senha) {
 		this.id = id;
 		this.nome = nome;
-		this.numero = numero;
 		this.usuario = usuario;
 		this.senha = senha;
 	}
@@ -67,14 +64,6 @@ public class AdministradorLogin {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}	
 	
 
 	

@@ -1,5 +1,6 @@
 package com.oasis.smartink.service;
 
+import com.oasis.smartink.model.AgendamentoPiercing;
 import com.oasis.smartink.model.OrcamentoPiercing;
 import com.oasis.smartink.repository.OrcamentoPiercingRepository;
 import org.springframework.beans.factory.annotation.Autowired;

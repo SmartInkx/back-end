@@ -1,26 +1,20 @@
 package com.oasis.smartink.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import java.util.UUID;
 
 @Entity
 @Table(name = "orcamento_tatuagem")
 public class OrcamentoTatuagem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID uuid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String nome;
 
@@ -32,30 +26,23 @@ public class OrcamentoTatuagem {
     @Column(name = "local_escolhido")
     private String localEscolhido;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "files_id", referencedColumnName = "id",
-                foreignKey = @ForeignKey(name = "idFile"))
-    private Files files;
 
-
-    public OrcamentoTatuagem(String nome, String celular, @Email String email, String localEscolhido, Files files) {
+    public OrcamentoTatuagem(String nome, String celular, @Email String email, String localEscolhido) {
         this.nome = nome;
         this.celular = celular;
         this.email = email;
         this.localEscolhido = localEscolhido;
-        this.files = files;
     }
 
     public OrcamentoTatuagem() {
     }
 
-
-    public UUID getUuid() {
-        return uuid;
+    public Long getId() {
+        return id;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -88,13 +75,5 @@ public class OrcamentoTatuagem {
 
     public void setLocalEscolhido(String localEscolhido) {
         this.localEscolhido = localEscolhido;
-    }
-
-    public Files getFiles() {
-        return files;
-    }
-
-    public void setFiles(Files files) {
-        this.files = files;
     }
 }

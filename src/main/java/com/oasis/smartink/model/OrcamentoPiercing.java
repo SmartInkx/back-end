@@ -1,21 +1,27 @@
 package com.oasis.smartink.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import java.util.UUID;
 
 @Entity
 @Table(name = "orcamento_piercing")
 public class OrcamentoPiercing {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID uuid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String nome;
 
@@ -37,12 +43,12 @@ public class OrcamentoPiercing {
     public OrcamentoPiercing() {
     }
 
-    public UUID getUuid() {
-        return uuid;
+    public Long getId() {
+        return id;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -76,4 +82,5 @@ public class OrcamentoPiercing {
     public void setLocalEscolhido(String localEscolhido) {
         this.localEscolhido = localEscolhido;
     }
+
 }
