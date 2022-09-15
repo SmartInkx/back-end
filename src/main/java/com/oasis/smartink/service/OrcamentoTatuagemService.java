@@ -5,9 +5,8 @@ import com.oasis.smartink.model.OrcamentoTatuagem;
 import com.oasis.smartink.repository.OrcamentoTatuagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+import java.util.List;
 
 @Service
 public class OrcamentoTatuagemService {
@@ -18,6 +17,15 @@ public class OrcamentoTatuagemService {
     public OrcamentoTatuagem save(OrcamentoTatuagem orcamentoTatuagem){
         try {
             return uploadOrcamentoTatuagem(orcamentoTatuagem);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<OrcamentoTatuagem> getAll(){
+        try {
+            return getOrcamentosTatuagem();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,6 +44,13 @@ public class OrcamentoTatuagemService {
 
 
         return buildOrcamentoTatuagem;
+    }
+
+    private List<OrcamentoTatuagem> getOrcamentosTatuagem(){
+
+        List<OrcamentoTatuagem> orcamentosTatuagem = orcamentoTatuagemRepository.findAll();
+
+        return orcamentosTatuagem;
     }
 
 }

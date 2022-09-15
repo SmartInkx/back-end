@@ -3,9 +3,9 @@ package com.oasis.smartink.service;
 import java.nio.charset.Charset;
 import java.util.Optional;
 
-import com.oasis.smartink.model.Usuario;
-import com.oasis.smartink.model.UsuarioLogin;
-import com.oasis.smartink.repository.UsuarioRepository;
+import com.oasis.smartink.model.Administrador;
+import com.oasis.smartink.model.AdministradorLogin;
+import com.oasis.smartink.repository.AdministradorRepository;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,46 +16,46 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UsuarioService {
+public class AdministradorService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private AdministradorRepository administradorRepository;
 
 
-    public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
+    public Optional<Administrador> cadastrarAdministrador(Administrador administrador) {
 
-        if (usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
+        if (administradorRepository.findByUsuario(administrador.getUsuario()).isPresent())
             return Optional.empty();
 
 
-        usuario.setSenha(criptografarSenha(usuario.getSenha()));
+        administrador.setSenha(criptografarSenha(administrador.getSenha()));
 
 
-        return Optional.of(usuarioRepository.save(usuario));
+        return Optional.of(administradorRepository.save(administrador));
 
     }
 
 
-    public Optional<Usuario> logarUsuario(Usuario usuario) {
+    public Optional<Administrador> logarUsuario(Administrador administrador) {
 
-        if (usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
+        if (administradorRepository.findByUsuario(administrador.getUsuario()).isPresent())
             return Optional.empty();
 
 
-        return Optional.of(usuarioRepository.save(usuario));
+        return Optional.of(administradorRepository.save(administrador));
 
     }
 
 
-    public Optional<Usuario> atualizarUsuario(Usuario usuario) {
+    public Optional<Administrador> atualizarAdministrador(Administrador administrador) {
 
-        if(usuarioRepository.findById(usuario.getId()).isPresent()) {
-
-
-            usuario.setSenha(criptografarSenha(usuario.getSenha()));
+        if(administradorRepository.findById(administrador.getId()).isPresent()) {
 
 
-            return Optional.ofNullable(usuarioRepository.save(usuario));
+            administrador.setSenha(criptografarSenha(administrador.getSenha()));
+
+
+            return Optional.ofNullable(administradorRepository.save(administrador));
 
         }
 
@@ -65,10 +65,10 @@ public class UsuarioService {
     }
 
 
-    public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin) {
+    public Optional<AdministradorLogin> autenticarAdministrador(Optional<AdministradorLogin> usuarioLogin) {
 
 
-        Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
+        Optional<Administrador> usuario = administradorRepository.findByUsuario(usuarioLogin.get().getUsuario());
 
         if (usuario.isPresent()) {
 

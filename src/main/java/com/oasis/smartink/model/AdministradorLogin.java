@@ -1,7 +1,7 @@
 package com.oasis.smartink.model;
 
 
-public class UsuarioLogin {
+public class AdministradorLogin {
 	
 
 	private Long id;
@@ -16,7 +16,7 @@ public class UsuarioLogin {
 
 	private String token;
 	
-	public UsuarioLogin(Long id, String nome, String numero, String usuario, String senha) {
+	public AdministradorLogin(Long id, String nome, String numero, String usuario, String senha) {
 		this.id = id;
 		this.nome = nome;
 		this.numero = numero;
@@ -24,7 +24,7 @@ public class UsuarioLogin {
 		this.senha = senha;
 	}
 	
-	public UsuarioLogin() {} 
+	public AdministradorLogin() {}
 
 	
 	public Long getId() {

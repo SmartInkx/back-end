@@ -5,6 +5,8 @@ import com.oasis.smartink.repository.OrcamentoPiercingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrcamentoPiercingService {
 
@@ -14,6 +16,15 @@ public class OrcamentoPiercingService {
     public OrcamentoPiercing save(OrcamentoPiercing orcamentoPiercing){
         try {
             return uploadOrcamentoPiercing(orcamentoPiercing);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<OrcamentoPiercing> getAll(){
+        try {
+            return getOrcamentosPiercing();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,6 +42,13 @@ public class OrcamentoPiercingService {
 
 
         return buildOrcamentoPiercing;
+    }
+
+    private List<OrcamentoPiercing> getOrcamentosPiercing(){
+
+        List<OrcamentoPiercing> orcamentosPiercing = orcamentoPiercingRepository.findAll();
+
+        return orcamentosPiercing;
     }
 
 }

@@ -2,8 +2,8 @@ package com.oasis.smartink.security;
 
 import java.util.Optional;
 
-import com.oasis.smartink.model.Usuario;
-import com.oasis.smartink.repository.UsuarioRepository;
+import com.oasis.smartink.model.Administrador;
+import com.oasis.smartink.repository.AdministradorRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
-	private UsuarioRepository userRepository;
+	private AdministradorRepository userRepository;
 
 
 
@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	
 		
-		Optional<Usuario> usuario = userRepository.findByUsuario(userName);
+		Optional<Administrador> usuario = userRepository.findByUsuario(userName);
 		
 		 
 	  

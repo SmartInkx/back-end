@@ -1,9 +1,8 @@
 package com.oasis.smartink.service;
 
 import com.oasis.smartink.model.Files;
-import com.oasis.smartink.model.Usuario;
 import com.oasis.smartink.repository.FilesRepository;
-import com.oasis.smartink.repository.UsuarioRepository;
+import com.oasis.smartink.repository.AdministradorRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,7 +12,7 @@ import java.io.IOException;
 public class FilesService {
 
     FilesRepository filesRepository;
-    UsuarioRepository usuarioRepository;
+    AdministradorRepository administradorRepository;
 
     public FilesService(FilesRepository filesRepository/*, UsuarioRepository usuarioRepository*/) {
         this.filesRepository = filesRepository;

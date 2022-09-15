@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_usuarios")
-public class Usuario {
+public class Administrador {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Usuario {
 	private String numero;
 
 
-	public Usuario(Long id, String nome, String usuario, String senha, String numero) {
+	public Administrador(Long id, String nome, String usuario, String senha, String numero) {
 		this.id = id;
 		this.nome = nome;
 		this.usuario = usuario;
@@ -41,7 +41,7 @@ public class Usuario {
 		this.senha = numero;
 	}
 	
-	public Usuario() {}
+	public Administrador() {}
 
 	public Long getId() {
 		return id;

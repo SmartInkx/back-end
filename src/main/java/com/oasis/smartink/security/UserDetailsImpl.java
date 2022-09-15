@@ -3,7 +3,7 @@ package com.oasis.smartink.security;
 import java.util.Collection;
 import java.util.List;
 
-import com.oasis.smartink.model.Usuario;
+import com.oasis.smartink.model.Administrador;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,9 +19,9 @@ public class UserDetailsImpl implements UserDetails {
 
 	
 
-	public UserDetailsImpl(Usuario usuario) {
-		this.userName = usuario.getUsuario();
-		this.password = usuario.getSenha();
+	public UserDetailsImpl(Administrador administrador) {
+		this.userName = administrador.getUsuario();
+		this.password = administrador.getSenha();
 	}
 
 	

@@ -6,12 +6,12 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.oasis.smartink.model.Usuario;
+import com.oasis.smartink.model.Administrador;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface AdministradorRepository extends JpaRepository<Administrador, Long> {
 
-	public Optional<Usuario> findByUsuario( String usuario);
+	public Optional<Administrador> findByUsuario(String usuario);
 	
  
 
