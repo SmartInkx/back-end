@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "tb_usuarios")
 public class Administrador {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -29,13 +29,14 @@ public class Administrador {
 	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
 	private String senha;
 
-	public Administrador(Long id, String nome, String usuario, String senha) {
+
+	public Administrador(Long id, String nome, String usuario, String senha, String numero) {
 		this.id = id;
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
 	}
-	
+
 	public Administrador() {}
 
 	public Long getId() {

@@ -16,15 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/agendamentoPiercing")
+@RequestMapping("/agendamentopiercing")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AgendamentoPiercingController {
 
     @Autowired
     AgendamentoPiercingService agendamentoPiercingService;
-
-    @Autowired
-    AgendamentoPiercingRepository agendamentoPiercingRepository;
 
     @GetMapping
     public ResponseEntity<List<AgendamentoPiercing>> listarAgendamentosPiercing(){
@@ -33,7 +30,7 @@ public class AgendamentoPiercingController {
         return new ResponseEntity<>(agendamentosPiercing, HttpStatus.OK);
     }
 
-    @PostMapping("/enviarAgendamentoPiercing")
+    @PostMapping("/enviaragendamentopiercing")
     public ResponseEntity<AgendamentoPiercing> enviarAgendamentoPiercing(@RequestBody AgendamentoPiercing agendamentoPiercing){
 
         AgendamentoPiercing saveAgendamento = agendamentoPiercingService.save(agendamentoPiercing);

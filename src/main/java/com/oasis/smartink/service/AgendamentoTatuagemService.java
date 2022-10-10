@@ -1,12 +1,13 @@
 package com.oasis.smartink.service;
 
-import com.oasis.smartink.model.Administrador;
 import com.oasis.smartink.model.AgendamentoTatuagem;
-import com.oasis.smartink.model.OrcamentoTatuagem;
+import com.oasis.smartink.model.EstiloTatuagem;
 import com.oasis.smartink.repository.AgendamentoTatuagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -37,11 +38,18 @@ public class AgendamentoTatuagemService {
     private AgendamentoTatuagem uploadAgendamentoTatuagem(AgendamentoTatuagem agendamentoTatuagem) throws Exception {
 
         Double valor = agendamentoTatuagem.getValor();
-        Date horario = agendamentoTatuagem.getHorario();
-        OrcamentoTatuagem orcamentoTatuagem = agendamentoTatuagem.getOrcamentoTatuagem();
-        Administrador administrador = agendamentoTatuagem.getAdministradorProfissional();
+        String nomeCliente = agendamentoTatuagem.getNomeCliente();
+        String nomeProfissional = agendamentoTatuagem.getNomeProfissional();
+        String localTatuagem = agendamentoTatuagem.getLocalTatuagem();
+        String telefone = agendamentoTatuagem.getTelefone();
+        LocalTime horario = agendamentoTatuagem.getHorario();
+        LocalDate data = agendamentoTatuagem.getData();
+        EstiloTatuagem estiloTatuagem = agendamentoTatuagem.getEstiloTatuagem();
 
-        AgendamentoTatuagem buildAgendamentoTatuagem = agendamentoTatuagemRepository.saveAndFlush(new AgendamentoTatuagem(valor, horario, orcamentoTatuagem, administrador));
+
+
+        AgendamentoTatuagem buildAgendamentoTatuagem = agendamentoTatuagemRepository.saveAndFlush(new AgendamentoTatuagem(nomeCliente, nomeProfissional, valor, localTatuagem, telefone, data,
+                                                                                                                          horario, estiloTatuagem));
 
 
         return buildAgendamentoTatuagem;

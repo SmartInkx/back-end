@@ -2,7 +2,7 @@ package com.oasis.smartink.model;
 
 
 public class AdministradorLogin {
-	
+
 
 	private Long id;
 
@@ -13,17 +13,17 @@ public class AdministradorLogin {
 	private String senha;
 
 	private String token;
-	
+
 	public AdministradorLogin(Long id, String nome, String usuario, String senha) {
 		this.id = id;
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
 	}
-	
+
 	public AdministradorLogin() {}
 
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -43,7 +43,7 @@ public class AdministradorLogin {
 	public String getUsuario() {
 		return usuario;
 	}
-	
+
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
@@ -64,7 +64,6 @@ public class AdministradorLogin {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
 
-	
+
 }

@@ -1,11 +1,8 @@
 package com.oasis.smartink.controller;
 
 import com.oasis.smartink.model.AgendamentoTatuagem;
-import com.oasis.smartink.model.OrcamentoTatuagem;
 import com.oasis.smartink.repository.AgendamentoTatuagemRepository;
-import com.oasis.smartink.repository.OrcamentoTatuagemRepository;
 import com.oasis.smartink.service.AgendamentoTatuagemService;
-import com.oasis.smartink.service.OrcamentoTatuagemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +20,8 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AgendamentoTatuagemController {
 
-    //teste
-
     @Autowired
     AgendamentoTatuagemService agendamentoTatuagemService;
-
-    @Autowired
-    AgendamentoTatuagemRepository agendamentoTatuagemRepository;
 
     @GetMapping
     public ResponseEntity<List<AgendamentoTatuagem>> listarAgendamentosTatuagem(){
@@ -38,7 +30,7 @@ public class AgendamentoTatuagemController {
         return new ResponseEntity<>(agendamentosTatuagem, HttpStatus.OK);
     }
 
-    @PostMapping("/enviarAgendamentoTatuagem")
+    @PostMapping("/enviaragendamentotatuagem")
     public ResponseEntity<AgendamentoTatuagem> enviarAgendamentoTatuagem(@RequestBody AgendamentoTatuagem agendamentoTatuagem){
 
         AgendamentoTatuagem saveAgendamento = agendamentoTatuagemService.save(agendamentoTatuagem);

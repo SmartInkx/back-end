@@ -1,14 +1,13 @@
 package com.oasis.smartink.service;
 
-import com.oasis.smartink.model.Administrador;
 import com.oasis.smartink.model.AgendamentoPiercing;
-import com.oasis.smartink.model.AgendamentoTatuagem;
-import com.oasis.smartink.model.OrcamentoPiercing;
-import com.oasis.smartink.model.OrcamentoTatuagem;
+import com.oasis.smartink.model.MaterialPiercing;
 import com.oasis.smartink.repository.AgendamentoPiercingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -39,11 +38,16 @@ public class AgendamentoPiercingService {
     private AgendamentoPiercing uploadAgendamentoPiercing(AgendamentoPiercing agendamentoPiercing) throws Exception {
 
         Double valor = agendamentoPiercing.getValor();
-        OrcamentoPiercing orcamentoPiercing = agendamentoPiercing.getOrcamentoPiercing();
-        Administrador administrador = agendamentoPiercing.getAdministradorProfissional();
+        String nomeCliente = agendamentoPiercing.getNomeCliente();
+        String nomeProfissional = agendamentoPiercing.getNomeProfissional();
+        String localPiercing = agendamentoPiercing.getLocalPiercing();
+        String telefone = agendamentoPiercing.getTelefone();
+        LocalTime horario = agendamentoPiercing.getHorario();
+        LocalDate data = agendamentoPiercing.getData();
+        MaterialPiercing materialPiercing = agendamentoPiercing.getMaterialPiercing();
 
-        AgendamentoPiercing buildagendamentoPiercing = agendamentoPiercingRepository.saveAndFlush(new AgendamentoPiercing(valor, orcamentoPiercing, administrador));
-
+        AgendamentoPiercing buildagendamentoPiercing = agendamentoPiercingRepository.saveAndFlush(new AgendamentoPiercing(nomeCliente, nomeProfissional, valor, localPiercing, telefone, data, horario,
+                                                                                                                          materialPiercing));
 
         return buildagendamentoPiercing;
     }
