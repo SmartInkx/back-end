@@ -64,7 +64,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/materialpiercing/enviarmaterialpiercing").permitAll()
 			.antMatchers("/tipotatuagem/enviartipotatuagem").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
-			.anyRequest().authenticated()
+			.anyRequest().permitAll()
 			.and().httpBasic()
 			.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and().cors()

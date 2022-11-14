@@ -1,6 +1,7 @@
 package com.oasis.smartink.service;
 
 import com.oasis.smartink.model.AgendamentoPiercing;
+import com.oasis.smartink.model.EstiloTatuagem;
 import com.oasis.smartink.model.MaterialPiercing;
 import com.oasis.smartink.repository.AgendamentoPiercingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AgendamentoPiercingService {
@@ -57,5 +59,28 @@ public class AgendamentoPiercingService {
         List<AgendamentoPiercing> agendamentosPiercing = agendamentoPiercingRepository.findAll();
 
         return agendamentosPiercing;
+    }
+
+    public Optional<AgendamentoPiercing> updateAgendamentoPiercing(Long id, AgendamentoPiercing agendamentoPiercing) {
+        agendamentoPiercingRepository.findById(id)
+                                .map(newAP -> {
+                                    newAP.setData(agendamentoPiercing.getData());
+                                    newAP.setHorario(agendamentoPiercing.getHorario());
+                                    newAP.setLocalPiercing(agendamentoPiercing.getLocalPiercing());
+                                    newAP.setMaterialPiercing(agendamentoPiercing.getMaterialPiercing());
+                                    newAP.setNomeCliente(agendamentoPiercing.getNomeCliente());
+                                    newAP.setNomeProfissional(agendamentoPiercing.getNomeProfissional());
+                                    newAP.setTelefone(agendamentoPiercing.getTelefone());
+                                    newAP.setValor(agendamentoPiercing.getValor());
+                                    AgendamentoPiercing updated = agendamentoPiercingRepository.save(newAP);
+                                    return updated;
+                                });
+
+        Optional<AgendamentoPiercing> agendamentoPiercingById = agendamentoPiercingRepository.findById(id);
+        return agendamentoPiercingById;
+    }
+
+    public void deleteAgendamentoPiercing(Long id){
+        agendamentoPiercingRepository.deleteById(id);
     }
 }

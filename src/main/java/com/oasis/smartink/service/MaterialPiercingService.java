@@ -1,13 +1,12 @@
 package com.oasis.smartink.service;
 
-import com.oasis.smartink.model.AgendamentoPiercing;
 import com.oasis.smartink.model.MaterialPiercing;
 import com.oasis.smartink.repository.MaterialPiercingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MaterialPiercingService {
@@ -49,4 +48,22 @@ public class MaterialPiercingService {
 
         return materialPiercing;
     }
+
+    public Optional<MaterialPiercing> updateMaterialPiercing(Long id, MaterialPiercing materialPiercing) {
+        materialPiercingRepository.findById(id)
+                                  .map(newMP -> {
+                                      newMP.setTipo(materialPiercing.getTipo());
+                                      newMP.setValor(materialPiercing.getValor());
+                                      MaterialPiercing updated = materialPiercingRepository.save(newMP);
+                                      return updated;
+                                  });
+
+        Optional<MaterialPiercing> materialPiercingById = materialPiercingRepository.findById(id);
+        return materialPiercingById;
+    }
+
+    public void deletMaterialPiercing(Long id){
+        materialPiercingRepository.deleteById(id);
+    }
+
 }

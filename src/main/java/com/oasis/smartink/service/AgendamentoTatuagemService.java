@@ -1,5 +1,6 @@
 package com.oasis.smartink.service;
 
+import com.oasis.smartink.model.AgendamentoPiercing;
 import com.oasis.smartink.model.AgendamentoTatuagem;
 import com.oasis.smartink.model.EstiloTatuagem;
 import com.oasis.smartink.repository.AgendamentoTatuagemRepository;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AgendamentoTatuagemService {
@@ -60,5 +62,28 @@ public class AgendamentoTatuagemService {
         List<AgendamentoTatuagem> agendamentosTatuagem = agendamentoTatuagemRepository.findAll();
 
         return agendamentosTatuagem;
+    }
+
+    public Optional<AgendamentoTatuagem> updateAgendamentoTatuagem(Long id, AgendamentoTatuagem agendamentoTatuagem) {
+        agendamentoTatuagemRepository.findById(id)
+                                     .map(newAT -> {
+                                         newAT.setData(agendamentoTatuagem.getData());
+                                         newAT.setHorario(agendamentoTatuagem.getHorario());
+                                         newAT.setLocalTatuagem(agendamentoTatuagem.getLocalTatuagem());
+                                         newAT.setEstiloTatuagem(agendamentoTatuagem.getEstiloTatuagem());
+                                         newAT.setNomeCliente(agendamentoTatuagem.getNomeCliente());
+                                         newAT.setNomeProfissional(agendamentoTatuagem.getNomeProfissional());
+                                         newAT.setTelefone(agendamentoTatuagem.getTelefone());
+                                         newAT.setValor(agendamentoTatuagem.getValor());
+                                         AgendamentoTatuagem updated = agendamentoTatuagemRepository.save(newAT);
+                                         return updated;
+                                     });
+
+        Optional<AgendamentoTatuagem> agendamentoTatuagemById = agendamentoTatuagemRepository.findById(id);
+        return agendamentoTatuagemById;
+    }
+
+    public void deleteAgendamentoPiercing(Long id){
+        agendamentoTatuagemRepository.deleteById(id);
     }
 }
