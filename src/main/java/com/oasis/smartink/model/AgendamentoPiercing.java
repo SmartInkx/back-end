@@ -51,7 +51,6 @@ public class AgendamentoPiercing {
     private LocalTime horario;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @MapsId("material_piercing_id")
     private MaterialPiercing materialPiercing;
 
 
