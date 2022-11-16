@@ -50,8 +50,7 @@ public class AgendamentoPiercing {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime horario;
 
-    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @MapsId("material_piercing_Id")
+    @OneToOne(cascade = CascadeType.MERGE)
     private MaterialPiercing materialPiercing;
 
 
