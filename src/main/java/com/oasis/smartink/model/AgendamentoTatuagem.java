@@ -54,7 +54,7 @@ public class AgendamentoTatuagem {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime horario;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL)
     private EstiloTatuagem estiloTatuagem;
 
     public AgendamentoTatuagem(String nomeCliente, String nomeProfissional, Double valor, String localTatuagem, String telefone, LocalDate data, LocalTime horario, EstiloTatuagem estiloTatuagem) {
