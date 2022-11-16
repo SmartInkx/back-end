@@ -30,8 +30,7 @@ import java.util.Date;
 public class AgendamentoPiercing {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nomeCliente;

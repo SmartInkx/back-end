@@ -17,8 +17,7 @@ import javax.validation.constraints.Size;
 public class Administrador {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-	@GenericGenerator(name = "native", strategy = "native")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull(message = "O atributo Nome é Obrigatório!")
