@@ -11,10 +11,12 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
@@ -30,8 +32,8 @@ import java.util.Date;
 public class AgendamentoTatuagem {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
     private String nomeCliente;
@@ -50,7 +52,8 @@ public class AgendamentoTatuagem {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime horario;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "estilo_tatuagem_id")
     private EstiloTatuagem estiloTatuagem;
 
     public AgendamentoTatuagem(String nomeCliente, String nomeProfissional, Double valor, String localTatuagem, String telefone, LocalDate data, LocalTime horario, EstiloTatuagem estiloTatuagem) {
