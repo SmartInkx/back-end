@@ -54,7 +54,7 @@ public class AgendamentoTatuagem {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime horario;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @MapsId("estilo_tatuagem_Id")
     private EstiloTatuagem estiloTatuagem;
 
