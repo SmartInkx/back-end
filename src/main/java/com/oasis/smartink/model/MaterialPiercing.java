@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class MaterialPiercing {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 

@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 public class Administrador {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
 	private Long id;
 

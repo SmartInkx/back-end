@@ -13,10 +13,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
@@ -32,7 +34,7 @@ import java.util.Date;
 public class AgendamentoTatuagem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
@@ -52,8 +54,8 @@ public class AgendamentoTatuagem {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime horario;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "estilo_tatuagem_id")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @MapsId("estilo_tatuagem_Id")
     private EstiloTatuagem estiloTatuagem;
 
     public AgendamentoTatuagem(String nomeCliente, String nomeProfissional, Double valor, String localTatuagem, String telefone, LocalDate data, LocalTime horario, EstiloTatuagem estiloTatuagem) {

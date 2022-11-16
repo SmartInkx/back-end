@@ -9,10 +9,12 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
@@ -28,7 +30,7 @@ import java.util.Date;
 public class AgendamentoPiercing {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
@@ -48,8 +50,8 @@ public class AgendamentoPiercing {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime horario;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "material_piercing_id")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @MapsId("material_piercing_id")
     private MaterialPiercing materialPiercing;
 
 
