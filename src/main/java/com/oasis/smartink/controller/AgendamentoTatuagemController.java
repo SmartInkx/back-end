@@ -54,6 +54,6 @@ public class AgendamentoTatuagemController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteAgendamentoTatuagem(@PathVariable("id") Long id) {
         agendamentoTatuagemService.deleteAgendamentoPiercing(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Deletado com sucesso");
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

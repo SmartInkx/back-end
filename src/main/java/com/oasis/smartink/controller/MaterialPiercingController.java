@@ -54,7 +54,7 @@ public class MaterialPiercingController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteMaterialPiercingById(@PathVariable("id") Long id) {
         materialPiercingService.deletMaterialPiercing(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Deletado com sucesso");
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 }

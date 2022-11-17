@@ -53,6 +53,6 @@ public class EstiloTatuagemController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteEstiloTatuagem(@PathVariable("id") Long id) {
         estiloTatuagemService.deleteEstiloTatuagem(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Deletado com sucesso");
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

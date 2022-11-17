@@ -54,6 +54,6 @@ public class TrabalhosRealizadosController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteTrabalhosRealizados(@PathVariable("id") Long id) {
         trabalhosRealizadosService.deleteTrabalhosRealizados(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Deletado com sucesso");
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

@@ -54,7 +54,7 @@ public class AgendamentoPiercingController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteAgendamentoPiercing(@PathVariable("id") Long id) {
         agendamentoPiercingService.deleteAgendamentoPiercing(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Deletado com sucesso");
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 }
