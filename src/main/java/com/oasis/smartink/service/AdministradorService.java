@@ -24,7 +24,7 @@ public class AdministradorService {
 
     public Optional<Administrador> cadastrarAdministrador(Administrador administrador) {
 
-        if (administradorRepository.findByUsuario(administrador.getUsuario()).isPresent())
+        if (administradorRepository.findByUsuario(administrador.getEmail()).isPresent())
             return Optional.empty();
 
 
@@ -38,7 +38,7 @@ public class AdministradorService {
 
     public Optional<Administrador> logarUsuario(Administrador administrador) {
 
-        if (administradorRepository.findByUsuario(administrador.getUsuario()).isPresent())
+        if (administradorRepository.findByUsuario(administrador.getEmail()).isPresent())
             return Optional.empty();
 
 
@@ -68,7 +68,7 @@ public class AdministradorService {
     public Optional<AdministradorLogin> autenticarAdministrador(Optional<AdministradorLogin> usuarioLogin) {
 
 
-        Optional<Administrador> usuario = administradorRepository.findByUsuario(usuarioLogin.get().getUsuario());
+        Optional<Administrador> usuario = administradorRepository.findByUsuario(usuarioLogin.get().getEmail());
 
         if (usuario.isPresent()) {
 
@@ -78,7 +78,7 @@ public class AdministradorService {
 
                 usuarioLogin.get().setId(usuario.get().getId());
                 usuarioLogin.get().setNome(usuario.get().getNome());
-                usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
+                usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getEmail(), usuarioLogin.get().getSenha()));
                 usuarioLogin.get().setSenha(usuario.get().getSenha());
 
 

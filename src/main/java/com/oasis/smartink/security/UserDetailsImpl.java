@@ -20,7 +20,7 @@ public class UserDetailsImpl implements UserDetails {
 	
 
 	public UserDetailsImpl(Administrador administrador) {
-		this.userName = administrador.getUsuario();
+		this.userName = administrador.getEmail();
 		this.password = administrador.getSenha();
 	}
 

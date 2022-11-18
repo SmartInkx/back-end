@@ -1,7 +1,5 @@
 package com.oasis.smartink.model;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,17 +23,17 @@ public class Administrador {
 
 	@NotNull(message = "O atributo Usuário é Obrigatório!")
 	@Email(message = "O atributo Usuário deve ser um email válido!")
-	private String usuario;
+	private String email;
 
 	@NotBlank(message = "O atributo Senha é Obrigatório!")
 	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
 	private String senha;
 
 
-	public Administrador(Long id, String nome, String usuario, String senha, String numero) {
+	public Administrador(Long id, String nome, String email, String senha) {
 		this.id = id;
 		this.nome = nome;
-		this.usuario = usuario;
+		this.email = email;
 		this.senha = senha;
 	}
 
@@ -57,12 +55,12 @@ public class Administrador {
 		this.nome = nome;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setEmail(String usuario) {
+		this.email = usuario;
 	}
 
 	public String getSenha() {
