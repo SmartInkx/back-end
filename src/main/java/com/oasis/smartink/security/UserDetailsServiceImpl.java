@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	
 		
-		Optional<Administrador> usuario = userRepository.findByUsuario(userName);
+		Optional<Administrador> usuario = userRepository.findByEmail(userName);
 		
 		 
 	  

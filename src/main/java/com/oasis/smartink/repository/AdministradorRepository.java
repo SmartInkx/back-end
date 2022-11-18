@@ -11,7 +11,7 @@ import com.oasis.smartink.model.Administrador;
 @Repository
 public interface AdministradorRepository extends JpaRepository<Administrador, Long> {
 
-	public Optional<Administrador> findByUsuario(String usuario);
+	public Optional<Administrador> findByEmail(String email);
 	
  
 
